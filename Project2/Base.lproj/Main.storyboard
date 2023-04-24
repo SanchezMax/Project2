@@ -18,6 +18,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhP-WB-lHe">
                                 <rect key="frame" x="103" y="100" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DhP-WB-lHe" secondAttribute="height" multiplier="112:57" id="Dra-vx-Mf2"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -26,6 +29,9 @@
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvw-ky-DRk">
                                 <rect key="frame" x="103" y="244" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="vvw-ky-DRk" secondAttribute="height" multiplier="112:57" id="G8Y-Z9-jBA"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -34,6 +40,9 @@
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzg-OO-XMK">
                                 <rect key="frame" x="103" y="388" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xzg-OO-XMK" secondAttribute="height" multiplier="112:57" id="rv0-ZO-8Rx"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -45,11 +54,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vvw-ky-DRk" firstAttribute="top" secondItem="DhP-WB-lHe" secondAttribute="bottom" constant="30" id="I8e-JX-lO2"/>
+                            <constraint firstItem="xzg-OO-XMK" firstAttribute="height" secondItem="vvw-ky-DRk" secondAttribute="height" id="INc-Qe-S5E"/>
                             <constraint firstItem="vvw-ky-DRk" firstAttribute="centerX" secondItem="DhP-WB-lHe" secondAttribute="centerX" id="KZg-XD-fG1"/>
                             <constraint firstItem="DhP-WB-lHe" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UHZ-Cw-SBl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xzg-OO-XMK" secondAttribute="bottom" constant="20" id="hMY-8C-x5L"/>
                             <constraint firstItem="xzg-OO-XMK" firstAttribute="centerX" secondItem="vvw-ky-DRk" secondAttribute="centerX" id="iQ8-r4-lXD"/>
                             <constraint firstItem="xzg-OO-XMK" firstAttribute="top" secondItem="vvw-ky-DRk" secondAttribute="bottom" constant="30" id="l3m-SF-ch1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="DhP-WB-lHe" secondAttribute="top" constant="3" id="tWF-sv-p19"/>
+                            <constraint firstItem="vvw-ky-DRk" firstAttribute="height" secondItem="DhP-WB-lHe" secondAttribute="height" id="xpT-o7-6yr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mKh-Sn-xgm"/>
