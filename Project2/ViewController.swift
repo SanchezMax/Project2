@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var correctAnswer = 0
     var questionAskedTimes = 0
     
+    var highscore = UserDefaults.standard.integer(forKey: "highscore")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,11 +47,21 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5) { [weak self] in
+            self?.button1.transform = .identity
+            self?.button2.transform = .identity
+            self?.button3.transform = .identity
+        }
+        
         title = "\(countries[correctAnswer].uppercased()), Score is \(score)"
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5) {
+            sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }
 
         if sender.tag == correctAnswer {
             title = "Correct"
@@ -70,7 +82,7 @@ class ViewController: UIViewController {
     
     @objc func infoTapped() {
         let ac = UIAlertController(title: "Info", message: "Your score is \(score).", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: askQuestion))
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
         present(ac, animated: true)
     }
     
