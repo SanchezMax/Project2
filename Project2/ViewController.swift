@@ -5,6 +5,7 @@
 //  Created by Aleksey Novikov on 07.04.2023.
 //
 
+import UserNotifications
 import UIKit
 
 class ViewController: UIViewController {
@@ -21,6 +22,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        registerLocal()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(infoTapped))
         
@@ -35,6 +38,40 @@ class ViewController: UIViewController {
         button3.layer.borderColor = UIColor.lightGray.cgColor
         
         askQuestion()
+    }
+    
+    @objc func registerLocal() {
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { [weak self] granted, error in
+            if granted {
+                self?.scheduleLocal()
+                print("Yay!")
+            } else {
+                print("D'oh")
+            }
+        }
+    }
+    
+    @objc func scheduleLocal() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "New day has come"
+        content.body = "It's time to guess another glag!"
+        content.categoryIdentifier = "remind"
+        content.userInfo = ["customData": "fizzbuzz"]
+        content.sound = .default
+        
+        var dateComponents = DateComponents()
+        dateComponents.hour = 10
+        dateComponents.minute = 30
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        center.add(request)
     }
 
     func askQuestion(action: UIAlertAction! = nil) {
